@@ -1,0 +1,91 @@
+{
+  "provider": "jsonrpc-mcp",
+  "endpoints": {
+    "metadata": "https://metadata.example.com/mcp",
+    "schedule": "https://schedule.example.com/mcp"
+  },
+  "token_env": "DATADEV_API_TOKEN",
+  "headers": {
+    "Authorization": "Bearer ${token}"
+  },
+  "timeout": 60,
+  "retries": 3,
+  "operations": {
+    "search_table": {
+      "service": "metadata",
+      "tool": "metadata.search_table",
+      "arguments": {
+        "dbName": "{db}",
+        "tableName": "{name}"
+      },
+      "response": {
+        "path": "data.records",
+        "item": {
+          "guid": "guid",
+          "name": "name",
+          "qualifiedName": "qualifiedName"
+        }
+      }
+    },
+    "get_table": {
+      "service": "metadata",
+      "tool": "metadata.get_table",
+      "arguments": {
+        "guid": "{guid}"
+      },
+      "response": {
+        "path": "data"
+      }
+    },
+    "get_lineage": {
+      "service": "metadata",
+      "tool": "metadata.get_lineage",
+      "arguments": {
+        "guid": "{guid}"
+      },
+      "response": {
+        "path": "data.upstreamTables",
+        "item": {
+          "guid": "guid",
+          "qualifiedName": "qualifiedName"
+        }
+      }
+    },
+    "get_task_detail": {
+      "service": "schedule",
+      "tool": "schedule.get_task",
+      "arguments": {
+        "taskId": "{task_id}"
+      },
+      "response": {
+        "path": "data"
+      }
+    },
+    "get_task_dependencies": {
+      "service": "schedule",
+      "tool": "schedule.get_dependencies",
+      "arguments": {
+        "taskId": "{task_id}",
+        "scope": "{scope}",
+        "step": "{step}"
+      },
+      "response": {
+        "path": "data",
+        "pick": {
+          "DOWNSTREAM": "downstreamTaskIds",
+          "UPSTREAM": "upstreamTaskIds"
+        }
+      }
+    },
+    "get_task_sql": {
+      "service": "schedule",
+      "tool": "schedule.get_task_sql",
+      "arguments": {
+        "taskId": "{task_id}"
+      },
+      "response": {
+        "path": "data"
+      }
+    }
+  }
+}

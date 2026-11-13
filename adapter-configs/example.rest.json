@@ -1,0 +1,75 @@
+{
+  "provider": "rest",
+  "endpoint": "https://metadata.example.com/api/v1",
+  "token_env": "DATADEV_API_TOKEN",
+  "headers": {
+    "Authorization": "Bearer ${token}"
+  },
+  "timeout": 60,
+  "retries": 2,
+  "operations": {
+    "search_table": {
+      "method": "GET",
+      "path": "/tables",
+      "query": {
+        "name": "{name}",
+        "db": "{db}"
+      },
+      "response": {
+        "path": "data.items",
+        "item": {
+          "guid": "id",
+          "name": "name",
+          "qualifiedName": "qualified_name"
+        }
+      }
+    },
+    "get_table": {
+      "method": "GET",
+      "path": "/tables/{guid}",
+      "response": {
+        "path": "data"
+      }
+    },
+    "get_lineage": {
+      "method": "GET",
+      "path": "/tables/{guid}/lineage",
+      "query": {
+        "direction": "{direction}"
+      },
+      "response": {
+        "path": "data.{direction}",
+        "item": {
+          "guid": "id",
+          "qualifiedName": "qualified_name"
+        }
+      }
+    },
+    "get_task_detail": {
+      "method": "GET",
+      "path": "/tasks/{task_id}",
+      "response": {
+        "path": "data"
+      }
+    },
+    "get_task_dependencies": {
+      "method": "GET",
+      "path": "/tasks/{task_id}/dependencies",
+      "query": {
+        "scope": "{scope}",
+        "depth": "{step}"
+      },
+      "response": {
+        "path": "data.{scope}"
+      }
+    },
+    "get_task_sql": {
+      "method": "GET",
+      "path": "/tasks/{task_id}/sql",
+      "response": {
+        "path": "data.statements",
+        "item": "sql"
+      }
+    }
+  }
+}

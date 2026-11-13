@@ -1,0 +1,169 @@
+{
+  "features": [
+    {
+      "id": "f-001",
+      "priority": 2,
+      "area": "skill",
+      "title": "master-data-modeling：主数据 MPC 自动建模",
+      "user_visible_behavior": "用户提主数据建模/字段命名/码值对齐需求，技能按 MPC 规范产出交付物",
+      "status": "passing",
+      "verification": "技能内硬性门控 + Review 清单；SKILL.md 工作流；test_model_builder.py",
+      "evidence": "合成案例 dm_demo_security（4 列 / 2 来源）；模型构建脚本测试全绿",
+      "notes": "v3.0.0；部署方需自备 MySQL / Panel / KS 凭据"
+    },
+    {
+      "id": "f-002",
+      "priority": 2,
+      "area": "skill",
+      "title": "master-data-source-mapping：主数据来源字段映射梳理",
+      "user_visible_behavior": "输入 dm_mast 表名，经 adapter 沿血缘链路输出接入源表清单 TSV + 字段级映射宽表 TSV",
+      "status": "passing",
+      "verification": "tests/test_adapter_demo.py::test_source_mapping_end_to_end（mock 端到端 + build_tsv）",
+      "evidence": "dm_demo_security → 4 列 / 1 模型 / 2 odata / 0 errors；两份 TSV 落盘",
+      "notes": "v2.0.0；分层前缀与来源优先级可配"
+    },
+    {
+      "id": "f-003",
+      "priority": 2,
+      "area": "skill",
+      "title": "data-dev-skill-sync：对话内一句话更新技能",
+      "user_visible_behavior": "用户说\"更新 data-dev 技能\"，agent 执行 subscribe.py --sync 并汇报版本变化与环境变量提醒",
+      "status": "passing",
+      "verification": "SKILL.md 指令 + tests/test_subscribe.py",
+      "evidence": "tests/test_subscribe.py（含市场名与默认目录断言）",
+      "notes": "v2.0.0"
+    },
+    {
+      "id": "f-004",
+      "priority": 2,
+      "area": "marketplace",
+      "title": "市场一致性自动发现（lint_marketplace）",
+      "user_visible_behavior": "技能目录与 marketplace.json 不同步时被自动发现：未上架自动入册、失效条目移除、内容改动版本未 bump 被拦截",
+      "status": "passing",
+      "verification": "python scripts/lint_marketplace.py --check",
+      "evidence": "tests/test_lint_marketplace.py；CI 每次 push/PR 运行",
+      "notes": "baseline 字段由 lint 维护"
+    },
+    {
+      "id": "f-005",
+      "priority": 3,
+      "area": "distribution",
+      "title": "订阅与同步（subscribe.py）",
+      "user_visible_behavior": "一次订阅后，一条命令 / 一句话 / 每日计划任务自动更新技能；.env 与 output 更新时保留；缺配环境变量时提醒",
+      "status": "passing",
+      "verification": "python -m pytest tests/test_subscribe.py -q；隔离目录订阅演练",
+      "evidence": "tests/test_subscribe.py 5 用例；--dest/--prefix 隔离演练通过",
+      "notes": "默认状态目录 ~/.data-dev-skills"
+    },
+    {
+      "id": "f-006",
+      "priority": 4,
+      "area": "distribution",
+      "title": "WorkBuddy ZIP 打包 + GitHub Actions",
+      "user_visible_behavior": "打 tag 自动产出 WorkBuddy 可上传的技能 ZIP（artifacts）；push/PR 自动跑 lint + adapter 校验 + pytest",
+      "status": "passing",
+      "verification": "python scripts/package_zips.py；.github/workflows/ci.yml 语法与步骤",
+      "evidence": "本地 ZIP 结构断言（首层技能目录、排除真实 .env）",
+      "notes": "首次发 tag 时在 GitHub 上确认 artifacts"
+    },
+    {
+      "id": "f-007",
+      "priority": 5,
+      "area": "distribution",
+      "title": "订阅量与版本使用统计",
+      "user_visible_behavior": "--sync 时回执到共享服务，可见谁还在用旧版本",
+      "status": "not_started",
+      "verification": "待设计（可选上报端点，默认关闭）",
+      "evidence": "",
+      "notes": "开源版本默认不采集任何使用数据"
+    },
+    {
+      "id": "f-008",
+      "priority": 6,
+      "area": "pipeline",
+      "title": "来源映射宽表 → 字段清单 TSV 转换（打通两技能入口）",
+      "user_visible_behavior": "source-mapping 的输出直接作为 modeling 的输入，全程无人工转格式",
+      "status": "not_started",
+      "verification": "dm_demo_security 案例端到端跑通",
+      "evidence": "",
+      "notes": "需要定义字段清单的标准列"
+    },
+    {
+      "id": "f-009",
+      "priority": 7,
+      "area": "codegen",
+      "title": "映射表 → 建表 DDL / 装载 SQL 生成",
+      "user_visible_behavior": "字段映射表直接生成 DDL 与装载 SQL，含命名/类型/码值校验回归",
+      "status": "not_started",
+      "verification": "生成结果校验脚本纳入回归",
+      "evidence": "",
+      "notes": ""
+    },
+    {
+      "id": "f-010",
+      "priority": 3,
+      "area": "skill",
+      "title": "model-lineage-impact：模型依赖血缘影响排查",
+      "user_visible_behavior": "输入调度号或模型表名，输出下游任务清单 + 字段级影响矩阵 + 引用证据明细 TSV，字段命中标注限定/疑似/同名置信度",
+      "status": "passing",
+      "verification": "tests/test_lineage_impact.py（11 用例）；tests/test_adapter_demo.py::test_lineage_impact_end_to_end",
+      "evidence": "任务 1001 一层下游 1 个任务；产出 0_scope / 1_downstream / 2_field_impact / 3_reference_detail / impact.json",
+      "notes": "v0.2.0；串行调用 + 磁盘缓存 + --max-tasks 护栏"
+    },
+    {
+      "id": "f-011",
+      "priority": 2,
+      "area": "distribution",
+      "title": "一句话安装 + 按技能环境变量引导",
+      "user_visible_behavior": "用户把 docs/install.md 链接发给 agent 即可完成订阅；缺配技能按变量引导（是否必填 / 谁提供 / 怎么拿），用 setup_env.py 写入 .env（值不回显）",
+      "status": "passing",
+      "verification": "subscribe.py --sync 逐变量缺配提醒；setup_env.py --list/--set；tests/test_setup_env.py",
+      "evidence": "隔离目录演练 + pytest 全绿",
+      "notes": "marketplace.json 的 skills[].env 为变量口径单一来源"
+    },
+    {
+      "id": "f-012",
+      "priority": 2,
+      "area": "distribution",
+      "title": "订阅凭据引导（GitHub Personal access token）",
+      "user_visible_behavior": "私有 fork 安装时引导用户生成 GitHub token 完成带凭据 clone；令牌失效时给出重生成 + git remote set-url 提示",
+      "status": "passing",
+      "verification": "docs/install.md / README 令牌步骤；data-dev-skill-sync「配置 Git 凭据」；subscribe.auth_error_hint 单测",
+      "evidence": "tests/test_subscribe.py::test_auth_error_hint_only_for_credential_errors",
+      "notes": "凭据仅存本机 clone 目录 .git/config，不入库"
+    },
+    {
+      "id": "f-013",
+      "priority": 1,
+      "area": "adapter",
+      "title": "真实平台 adapter 在线 smoke",
+      "user_visible_behavior": "在目标环境用真实令牌跑通 doctor + 两条元数据技能链路，确认响应映射覆盖实际接口",
+      "status": "not_started",
+      "verification": "python -m datadev_adapters doctor --config <real> --table <known>；collect_mapping / lineage_impact 各跑一次",
+      "evidence": "",
+      "notes": "本机无凭据/内网，当前以本地 JSON-RPC/REST 契约测试 + 合成 fixture 替代"
+    },
+    {
+      "id": "f-014",
+      "priority": 2,
+      "area": "adapter",
+      "title": "可插拔元数据 adapter（六操作）",
+      "user_visible_behavior": "同一套技能可对接 JSON-RPC MCP / REST / 离线 fixture；换平台只改 JSON 配置，不改技能代码",
+      "status": "passing",
+      "verification": "tests/test_adapter.py（配置、归一、映射、本地 JSON-RPC/REST 契约）；tests/test_adapter_demo.py",
+      "evidence": "34 passed；adapter 镜像 --check 通过",
+      "notes": "源码 packages/datadev_adapters，scripts/sync_adapters.py 镜像到各技能"
+    },
+    {
+      "id": "f-015",
+      "priority": 2,
+      "area": "docs",
+      "title": "开源文档与脱敏基线",
+      "user_visible_behavior": "中英 README、各 harness 接入指南、adapter 配置参考；仓库不含真实业务表/内部域名/凭据",
+      "status": "passing",
+      "verification": "README.md / README.zh-CN.md / docs/{install,adapter,harnesses,workbuddy}.md；git grep 内部标识为空",
+      "evidence": "2026-11-13 全仓 grep 检查；fixture 全部合成数据",
+      "notes": "业务案例只保留 .example 模板"
+    }
+  ]
+}

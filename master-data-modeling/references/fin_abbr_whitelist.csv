@@ -1,0 +1,14 @@
+abbr,full_name,zh,basis,added_by,added_at,note
+PE,price-to-earnings ratio,市盈率,2,skill-seed,,证券期货业通用估值术语（界定标准§2 条款2）
+PB,price-to-book ratio,市净率,2,skill-seed,,证券期货业通用估值术语
+EPS,earnings per share,每股收益,2,skill-seed,,证券期货业通用术语
+ROE,return on equity,净资产收益率,2,skill-seed,,证券期货业通用术语
+TTM,trailing twelve months,最近十二个月,2,skill-seed,,通用财务报告口径缩写
+YTM,yield to maturity,到期收益率,2,skill-seed,,债券通用术语
+NAV,net asset value,净资产值,2,skill-seed,,基金通用术语
+ISIN,international securities identification number,国际证券识别码,1,skill-seed,,ISO 6166 标准编码
+MIC,market identifier code,市场识别码,1,skill-seed,,ISO 10383 标准编码
+LEI,legal entity identifier,法人识别编码,1,skill-seed,,ISO 17442 标准编码
+CFI,classification of financial instruments,金融工具分类码,1,skill-seed,,ISO 10962 标准编码
+CUSIP,Committee on Uniform Securities Identification Procedures,美国证券统一识别码,1,unknown,,国际/行业标准编码（ISO 4217/6166/10383/17442/10962 等）
+THS,TongHuaShun (Hithink RoyalFlush),同花顺,4,unknown,,词根治理组登记认可的缩写

@@ -1,0 +1,5 @@
+# master-data-modeling skill 依赖
+#
+# python >= 3.8
+pymysql>=1.1          # 词根字典(md_word_roots)/字段缓存/码值表/使用记录存 MySQL（多用户共享），
+                      # roots.py、code_value.py、whitelist.py 经 scripts/db.py 连接，必需

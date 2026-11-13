@@ -1,0 +1,14 @@
+{
+  "records": [
+    {
+      "guid": "g-master",
+      "name": "dm_demo_security",
+      "qualifiedName": "dm_master.dm_demo_security"
+    },
+    {
+      "guid": "g-model",
+      "name": "pdata_demo_security",
+      "qualifiedName": "pdata_demo.pdata_demo_security"
+    }
+  ]
+}

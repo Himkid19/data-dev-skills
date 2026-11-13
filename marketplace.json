@@ -1,0 +1,221 @@
+{
+  "name": "data-dev-skills",
+  "displayName": "Data Dev Skills",
+  "description": "Vendor-neutral agent skills for data engineering teams: master-data modeling, source-to-master field mapping, and model lineage impact analysis. The metadata backend is pluggable through a six-operation adapter (JSON-RPC MCP / REST / offline fixtures), so the same skills work with different internal platforms.",
+  "updated": "2026-11-13",
+  "skills": [
+    {
+      "name": "master-data-modeling",
+      "version": "3.0.0",
+      "path": "./master-data-modeling",
+      "summary": "金融主数据建模 / Financial master-data modeling：按 MPC 规范（ISO/IEC 11179 + 术语根）完成字段命名、码值对齐、多源整合与 review 交付",
+      "docs": "./master-data-modeling/README.md",
+      "env": {
+        "template": ".env.example",
+        "vars": [
+          {
+            "name": "MD_OPERATOR",
+            "required": true,
+            "source": "self",
+            "guide": "填你自己的账号或花名（写入共享表时的操作人留痕），例如 zhangsan"
+          },
+          {
+            "name": "MYSQL_HOST",
+            "required": true,
+            "source": "developer",
+            "guide": "MySQL 共享库地址（术语根 / 字段缓存 / 码值资产）"
+          },
+          {
+            "name": "MYSQL_PORT",
+            "required": false,
+            "source": "developer",
+            "default": "3306"
+          },
+          {
+            "name": "MYSQL_USER",
+            "required": true,
+            "source": "developer"
+          },
+          {
+            "name": "MYSQL_PASS",
+            "required": true,
+            "source": "developer",
+            "secret": true
+          },
+          {
+            "name": "MYSQL_DB",
+            "required": true,
+            "source": "developer",
+            "default": "datadev_mast"
+          },
+          {
+            "name": "PANEL_BASE_URL",
+            "required": true,
+            "source": "developer",
+            "guide": "知识库 Panel 服务地址（写入/检索术语与规则）"
+          },
+          {
+            "name": "TDAI_SERVICE_ID",
+            "required": false,
+            "source": "developer",
+            "default": "default"
+          },
+          {
+            "name": "TDAI_USER_KEY",
+            "required": true,
+            "source": "developer",
+            "secret": true,
+            "guide": "Panel 用户 key（通常是 sk-mem- 开头）"
+          },
+          {
+            "name": "KS_BASE_URL",
+            "required": true,
+            "source": "developer",
+            "guide": "Knowledge Service（KS）检索服务地址"
+          },
+          {
+            "name": "WIKI_RULES_OFFICIAL",
+            "required": false,
+            "source": "developer",
+            "default": "modeling-rules",
+            "guide": "正式规则 wiki 资源 id"
+          },
+          {
+            "name": "WIKI_RULES_DRAFT",
+            "required": false,
+            "source": "developer",
+            "default": "modeling-rules-draft",
+            "guide": "草稿/待审规则 wiki 资源 id"
+          },
+          {
+            "name": "DDM_API_URL",
+            "required": false,
+            "source": "developer",
+            "default": "https://ddm.example.com/api/roots",
+            "guide": "仅“同步术语根”时需要，可不提供"
+          },
+          {
+            "name": "DDM_PORTAL_URL",
+            "required": false,
+            "source": "developer",
+            "default": "https://ddm.example.com",
+            "guide": "仅“同步术语根”时需要：用于生成 Origin/Referer"
+          },
+          {
+            "name": "DDM_USERNAME",
+            "required": false,
+            "source": "self",
+            "guide": "仅“同步术语根”时需要，可不提供"
+          },
+          {
+            "name": "DDM_COOKIE",
+            "required": false,
+            "source": "self",
+            "secret": true,
+            "guide": "仅“同步术语根”时需要：浏览器登录后复制 Cookie，可不提供"
+          },
+          {
+            "name": "DDM_VERIFY_SSL",
+            "required": false,
+            "source": "self",
+            "default": "1",
+            "guide": "1 校验证书；自签环境可设 0"
+          }
+        ]
+      },
+      "baseline": {
+        "version": "3.0.0",
+        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+      }
+    },
+    {
+      "name": "master-data-source-mapping",
+      "version": "2.0.0",
+      "path": "./master-data-source-mapping",
+      "summary": "主数据来源字段映射 / Master-data source mapping：沿 dm_mast→model→source 链路经 adapter 采集元数据/血缘/调度 ETL SQL，输出接入源表清单与字段级映射宽表",
+      "docs": "./master-data-source-mapping/README.md",
+      "env": {
+        "template": ".env.example",
+        "vars": [
+          {
+            "name": "DATADEV_API_TOKEN",
+            "required": true,
+            "source": "self",
+            "secret": true,
+            "guide": "元数据/调度服务的个人访问令牌；权限不够找平台管理员"
+          },
+          {
+            "name": "DATADEV_ADAPTER_CONFIG",
+            "required": false,
+            "source": "self",
+            "guide": "适配器配置 JSON 路径；不填时用 --adapter-config 或默认配置"
+          },
+          {
+            "name": "DM_LAYER_MODEL_PREFIX",
+            "required": false,
+            "source": "self",
+            "default": "pdata",
+            "guide": "模型层库名前缀，按本单位分层规范修改"
+          },
+          {
+            "name": "DM_LAYER_SOURCE_PREFIX",
+            "required": false,
+            "source": "self",
+            "default": "odata",
+            "guide": "来源层库名前缀，按本单位分层规范修改"
+          },
+          {
+            "name": "SOURCE_PRIORITY",
+            "required": false,
+            "source": "self",
+            "guide": "来源系统优先级（逗号分隔），未配置时按字母序"
+          }
+        ]
+      },
+      "baseline": {
+        "version": "2.0.0",
+        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+      }
+    },
+    {
+      "name": "data-dev-skill-sync",
+      "version": "2.0.0",
+      "path": "./data-dev-skill-sync",
+      "summary": "市场客户端元技能：在任意 harness 对话里说\"更新 data-dev 技能\"即可拉取并同步本市场全部技能",
+      "docs": "./docs/install.md",
+      "baseline": {
+        "version": "2.0.0",
+        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+      }
+    },
+    {
+      "name": "model-lineage-impact",
+      "version": "0.2.0",
+      "path": "./model-lineage-impact",
+      "summary": "模型依赖血缘影响排查 / Model lineage impact：输入调度号或模型表名，经 adapter 查下游依赖任务（默认 1 层），逐条解析 ETL SQL 的表引用、字段引用与 src_id 分区，输出影响矩阵 TSV",
+      "docs": "./model-lineage-impact/README.md",
+      "env": {
+        "template": ".env.example",
+        "vars": [
+          {
+            "name": "DATADEV_API_TOKEN",
+            "required": true,
+            "source": "self",
+            "secret": true,
+            "guide": "元数据/调度服务的个人访问令牌；权限不够找平台管理员"
+          },
+          {
+            "name": "DATADEV_ADAPTER_CONFIG",
+            "required": false,
+            "source": "self",
+            "guide": "适配器配置 JSON 路径；不填时用 --adapter-config 或默认配置"
+          }
+        ]
+      },
+      "baseline": {
+        "version": "0.2.0",
+        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+      }
+    }
+  ]
+}

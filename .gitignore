@@ -1,0 +1,38 @@
+# ── 环境与凭据（含 key/cookie，禁止提交）──
+.env
+.env.*
+!.env.example
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# ── 本地 adapter 配置（含内部地址，禁止提交；示例 example.*.json 仍入库）──
+adapter-configs/local*.json
+adapter-configs/*.local.json
+
+# ── 运行期生成物 ──
+# 建模交付物（output/<模型名>_<日期>/，随会话落盘）
+master-data-modeling/output/
+*.log
+*.zip
+dist/
+.tmp/
+
+# ── OS / 编辑器 ──
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+master-data-source-mapping/output/
+model-lineage-impact/output/
+
+# ── 临时草稿（会话取证/试跑产物，不入库）──
+.tmp-wb/
+output/

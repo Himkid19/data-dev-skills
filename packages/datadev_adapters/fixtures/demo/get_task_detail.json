@@ -1,0 +1,10 @@
+{
+  "default": {"data": {"taskId": "", "taskName": ""}},
+  "by": {
+    "1001": {"data": {"taskId": "1001", "taskName": "pdata_demo_security_A", "taskDesc": "来源 A 模型装载"}},
+    "1002": {"data": {"taskId": "1002", "taskName": "pdata_demo_security_B", "taskDesc": "来源 B 模型装载"}},
+    "1003": {"data": {"taskId": "1003", "taskName": "dm_demo_security_load", "taskDesc": "演示主数据装载"}},
+    "2001": {"data": {"taskId": "2001", "taskName": "pdata_demo_security_usage", "taskDesc": "下游使用任务"}},
+    "2002": {"data": {"taskId": "2002", "taskName": "pdata_demo_security_snapshot", "taskDesc": "下游快照任务"}}
+  }
+}

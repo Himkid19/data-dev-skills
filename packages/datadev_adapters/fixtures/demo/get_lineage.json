@@ -1,0 +1,20 @@
+{
+  "default": {"data": {"upstreamTables": []}},
+  "by": {
+    "g-master": {
+      "data": {
+        "upstreamTables": [
+          {"guid": "g-model", "qualifiedName": "pdata_demo.pdata_demo_security"}
+        ]
+      }
+    },
+    "g-model": {
+      "data": {
+        "upstreamTables": [
+          {"guid": "g-odata-a", "qualifiedName": "odata_vendor_a.security_master"},
+          {"guid": "g-odata-b", "qualifiedName": "odata_vendor_b.security_basic"}
+        ]
+      }
+    }
+  }
+}

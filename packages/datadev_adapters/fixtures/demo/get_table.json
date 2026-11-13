@@ -1,0 +1,75 @@
+{
+  "default": null,
+  "by": {
+    "g-master": {
+      "data": {
+        "guid": "g-master",
+        "name": "dm_demo_security",
+        "qualifiedName": "dm_master.dm_demo_security",
+        "comment": "演示主数据表（虚构数据）",
+        "columns": [
+          {"name": "scr_cd", "comment": "证券代码"},
+          {"name": "scr_cn_full_name", "comment": "证券中文名称"},
+          {"name": "mkt_cd", "comment": "市场代码", "codedsetCode": "market", "codedsetChnName": "市场代码"},
+          {"name": "list_date", "comment": "上市日期"}
+        ],
+        "technicalMetadata": {
+          "dbName": "dm_master",
+          "horaeTasks": [
+            {"taskId": 1003, "taskName": "dm_demo_security_load"}
+          ]
+        }
+      }
+    },
+    "g-model": {
+      "data": {
+        "guid": "g-model",
+        "name": "pdata_demo_security",
+        "qualifiedName": "pdata_demo.pdata_demo_security",
+        "comment": "演示模型表（虚构数据）",
+        "columns": [
+          {"name": "scr_cd", "comment": "证券代码"},
+          {"name": "scr_cn_full_name", "comment": "证券中文名称"},
+          {"name": "mkt_cd", "comment": "市场代码"},
+          {"name": "list_date", "comment": "上市日期"}
+        ],
+        "technicalMetadata": {
+          "dbName": "pdata_demo",
+          "horaeTasks": [
+            {"taskId": 1001, "taskName": "pdata_demo_security_A"},
+            {"taskId": 1002, "taskName": "pdata_demo_security_B"}
+          ]
+        }
+      }
+    },
+    "g-odata-a": {
+      "data": {
+        "guid": "g-odata-a",
+        "name": "security_master",
+        "qualifiedName": "odata_vendor_a.security_master",
+        "comment": "来源 A 证券主表（虚构数据）",
+        "columns": [
+          {"name": "security_code", "comment": "证券代码"},
+          {"name": "security_name", "comment": "证券名称"},
+          {"name": "market_code", "comment": "市场代码"},
+          {"name": "list_date", "comment": "上市日期"}
+        ],
+        "technicalMetadata": {"dbName": "odata_vendor_a"}
+      }
+    },
+    "g-odata-b": {
+      "data": {
+        "guid": "g-odata-b",
+        "name": "security_basic",
+        "qualifiedName": "odata_vendor_b.security_basic",
+        "comment": "来源 B 证券基础表（虚构数据）",
+        "columns": [
+          {"name": "sec_code", "comment": "证券代码"},
+          {"name": "sec_name", "comment": "证券名称"},
+          {"name": "market_id", "comment": "市场标识"}
+        ],
+        "technicalMetadata": {"dbName": "odata_vendor_b"}
+      }
+    }
+  }
+}

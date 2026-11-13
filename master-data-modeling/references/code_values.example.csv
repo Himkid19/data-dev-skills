@@ -1,0 +1,8 @@
+code_domain,std_value,std_label,std_label_en,source_of_truth
+list_status,1,上市,Listed,数据治理组
+list_status,2,退市,Delisted,数据治理组
+list_status,0,未上市,Not listed,数据治理组
+secu_class,bond,债券,Bond,数据治理组
+secu_class,stock,股票,Stock,数据治理组
+secu_class,fund,基金,Fund,数据治理组
+secu_class,index,指数,Index,数据治理组

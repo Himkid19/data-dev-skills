@@ -1,0 +1,31 @@
+{
+  "default": {"data": []},
+  "by": {
+    "1001": {
+      "data": [
+        "create table if not exists pdata_demo_security (\n  scr_cd string comment '证券代码',\n  scr_cn_full_name string comment '证券中文名称',\n  mkt_cd string comment '市场代码',\n  list_date string comment '上市日期'\n) partitioned by (src_id string)",
+        "insert overwrite table pdata_demo_security partition (src_id='A')\nselect a.security_code as scr_cd,\n       a.security_name as scr_cn_full_name,\n       a.market_code as mkt_cd,\n       a.list_date as list_date\nfrom odata_vendor_a.security_master a"
+      ]
+    },
+    "1002": {
+      "data": [
+        "insert overwrite table pdata_demo_security partition (src_id='B')\nselect b.sec_code as scr_cd,\n       b.sec_name as scr_cn_full_name,\n       b.market_id as mkt_cd,\n       cast(null as string) as list_date\nfrom odata_vendor_b.security_basic b"
+      ]
+    },
+    "1003": {
+      "data": [
+        "insert overwrite table dm_demo_security\nselect coalesce(a.scr_cd, b.scr_cd) as scr_cd,\n       case when a.src_id = 'A' then a.scr_cn_full_name else b.scr_cn_full_name end as scr_cn_full_name,\n       coalesce(a.mkt_cd, b.mkt_cd) as mkt_cd,\n       a.list_date as list_date\nfrom pdata_demo_security a\nleft join pdata_demo_security b on a.scr_cd = b.scr_cd and a.src_id = 'A' and b.src_id = 'B'"
+      ]
+    },
+    "2001": {
+      "data": [
+        "insert overwrite table pdata_demo_security_usage\nselect t.scr_cd as scr_cd,\n       t.scr_cn_full_name as secu_name\nfrom pdata_demo_security t\nwhere t.src_id = 'A'"
+      ]
+    },
+    "2002": {
+      "data": [
+        "insert overwrite table pdata_demo_security_snapshot\nselect s.scr_cd as scr_cd,\n       s.mkt_cd as mkt_cd\nfrom pdata_demo_security s"
+      ]
+    }
+  }
+}

@@ -1,0 +1,166 @@
+zh,abbr,note
+次数,cnt,次数并入计数类词
+计数,cnt,计数固定搭配（覆盖字典 计数→Num 旧译）
+金额,amt,金额固定搭配
+数量,qty,数量固定搭配
+比例,prop,比例固定搭配
+日期,date,日期固定搭配
+时间,time,时间固定搭配
+说明,desc,说明/描述固定搭配
+代码,cd,代码类字段固定搭配
+名称,name,名称类字段固定搭配
+简称,abbr_name,简称固定搭配（复合词根）
+拼音简称,abbr_pinyin_name,拼音简称复合搭配
+简称拼音,abbr_pinyin_name,源表拼写（简称拼音）同口径，避免落成 abbr_name_pinyin；团队约定
+标志,flag,是否/判断类字段固定搭配（统一 xx_flag）
+状态,stat,状态类字段固定搭配
+类型,type,类型类字段固定搭配
+类别,type,类别/类目统一 type
+类目,type,类别/类目统一 type
+编号,no,编号固定搭配
+方向,dir,方向固定搭配
+利润总额,ebit,比值字段分母口径：利润总额=EBIT
+所得税,tax,比值字段分子口径
+销售商品提供劳务收到的现金,sal_serv_cash,现金流量表项目；劳务按近义词服务(serv)处理，规避 销售商(Sler) 截胡切词
+债券,bnd,债券缩写统一 bnd
+基础,base,固定搭配
+信息,info,固定搭配
+业务,busi,固定搭配
+记录,rec,固定搭配
+证券,scr,固定搭配
+全,full,固定搭配
+拼音,pinyin,固定搭配
+市场,mkt,固定搭配
+货币,crrc,固定搭配
+上市,list,固定搭配
+公告,ntce,固定搭配
+退市,delist,固定搭配
+上网,surfnet,固定搭配
+发行,iss,固定搭配
+截止日期,maty_date,固定搭配
+起始,begn,固定搭配
+认购,subsp,固定搭配
+付息,itpy,固定搭配
+频率,freq,固定搭配
+期限,term,固定搭配
+天,day,固定搭配
+形式,form,固定搭配
+偿还,rmbrs,固定搭配
+方法,way,固定搭配
+方式,way,固定搭配
+交易,trd,固定搭配
+兑付,pay,固定搭配
+手续费,cms,固定搭配
+率,rate,固定搭配
+登记,reg,固定搭配
+利率,intrt,固定搭配
+利差,intr_marg,固定搭配
+息票,coup,固定搭配
+到期,maty,固定搭配
+参考,ref,固定搭配
+收益率,yield,固定搭配
+票面利率,coup_rate,固定搭配
+发行人,issr,固定搭配
+对象,obj,固定搭配
+公司,co,公司统一 co
+机构,co,机构统一 co
+企业,co,企业统一 co
+上限,ulmt,固定搭配
+评级,rat,固定搭配
+价,pric,固定搭配
+实际,actl,固定搭配
+计划,plan,固定搭配
+年内序号,yearsnum,固定搭配
+品种,var,固定搭配
+税,tax,固定搭配
+承销,undrw,固定搭配
+担保,guar,固定搭配
+简介,intro,固定搭配
+担保人,guar,固定搭配
+计息,inta,固定搭配
+可选择,optn,固定搭配
+权力,clm,固定搭配
+次级债,subordinate,固定搭配
+混合,compd,固定搭配
+资本,cptl,固定搭配
+债务,debt,固定搭配
+免税,free,固定搭配
+公司债,corpb,固定搭配
+增发,incrs,固定搭配
+净价,net_pric,固定搭配
+失败,fail,固定搭配
+跨市场,crsmkt,固定搭配
+赎回,redp,固定搭配
+提前,adv,固定搭配
+含权,opt_emb,固定搭配
+面值,par_val,固定搭配
+最新,last,固定搭配
+注册,reg,固定搭配
+文件,doc,固定搭配
+特殊,spec,固定搭配
+基准,bm,固定搭配
+原,ori,固定搭配
+会计,acctng,固定搭配
+处理,hand,固定搭配
+交收,sett,固定搭配
+余额,bal,固定搭配
+首次,fir,固定搭配
+规模,scal,固定搭配
+分层,tranc,固定搭配
+级别,lvl,固定搭配
+占比,prop,固定搭配
+总,tot,固定搭配
+补偿,compst,固定搭配
+转换,tran,固定搭配
+互换,swap,固定搭配
+本金,prin,固定搭配
+拆离,split,固定搭配
+回售,rsl,固定搭配
+进度,prog,固定搭配
+保荐人,spon,固定搭配
+主,main,固定搭配
+预估,expe,固定搭配
+条款,fpml,固定搭配
+资产,ast,固定搭配
+沪市,sh,固定搭配
+深圳,sz,固定搭配
+结算,sett,固定搭配
+非上市,unlist,固定搭配
+募集,coll,固定搭配
+浮动,flot,固定搭配
+利息,intr,固定搭配
+保底,min_gart,固定搭配
+计数总数,cnt,固定搭配
+基期,base,基期即基期日期，基期→base
+国别地区,cty,国别地区固定缩写
+发布,iss,发布统一 iss
+编制,comp,编制→comp
+选择权,optn,选择权→optn
+2月29,0229,2月29→0229 特例词根
+深市,sz,深市→sz
+推迟,pstp,推迟→pstp
+调息,adj,调息→adj
+首选,fir,首选→fir
+正股,stk,正股→stk
+清偿,clr,清偿→clr（源英文 clr_seq 口径；词根库缺口待登记，次序→seq 已有）
+计息方法,inta_method,计息方法→inta_method（消歧保留 method，与 计息方式→inta_way 区分，参考案例决策）
+份额,shr,MPC 类词表 份额→shr
+比率,rati,MPC 类词表：两指标相除无量纲比值
+等级,lvl,MPC 类词表：评级等级（与 级别→lvl 同族）
+权重,wght,MPC 类词表：权重系数
+盈亏,pal,MPC 类词表：损益值
+保证金,bail,MPC 类词表：保证金资金额
+溢价,prem,MPC 类词表：期权权利金/溢价价差
+价差,sprd,MPC 类词表：两个价格的差值
+股数,shrs,MPC 类词表：股票股份数量（复合词根）
+手数,lots,MPC 类词表：期货/期权合约手数
+周期,pd,MPC 类词表：时间周期维度
+文本,text,MPC 类词表：自由描述/备注/说明类字段统一文本类词
+数值,val,MPC 类词表：无专属金融量纲的金融参数
+年份,year,MPC 类词表：4位年份 int
+中文,cn,语言修饰词 Modifier 前置
+英文,en,语言修饰词 Modifier 前置
+序号,seq_no,序号→seq_no
+次序,seq_no,次序→seq_no
+顺序,seq_no,顺序→seq_no
+序列,seq_no,序列→seq_no

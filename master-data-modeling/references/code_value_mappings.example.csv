@@ -1,0 +1,5 @@
+code_domain,src_sys,src_field,src_value,src_label,std_value,note
+list_status,SRC_A,list_status,1,未上市,0,源A：1=未上市
+list_status,SRC_A,list_status,3,上市,1,源A：3=上市
+list_status,SRC_B,listing_status,0,未上市,0,源B：0=未上市
+list_status,SRC_B,listing_status,1,上市,1,源B：1=上市

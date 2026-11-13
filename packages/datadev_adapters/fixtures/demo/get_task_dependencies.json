@@ -1,0 +1,15 @@
+{
+  "default": {"data": {"upstreamTaskIds": [], "downstreamTaskIds": []}},
+  "by": {
+    "{\"scope\": \"DOWNSTREAM\", \"step\": 1, \"task_id\": \"1001\"}": {"data": {"downstreamTaskIds": ["1003"]}},
+    "{\"scope\": \"DOWNSTREAM\", \"step\": 1, \"task_id\": \"1002\"}": {"data": {"downstreamTaskIds": ["1003"]}},
+    "{\"scope\": \"DOWNSTREAM\", \"step\": 1, \"task_id\": \"1003\"}": {"data": {"downstreamTaskIds": ["2001", "2002"]}},
+    "{\"scope\": \"DOWNSTREAM\", \"step\": 1, \"task_id\": \"2001\"}": {"data": {"downstreamTaskIds": []}},
+    "{\"scope\": \"DOWNSTREAM\", \"step\": 1, \"task_id\": \"2002\"}": {"data": {"downstreamTaskIds": []}},
+    "{\"scope\": \"UPSTREAM\", \"step\": 1, \"task_id\": \"1001\"}": {"data": {"upstreamTaskIds": []}},
+    "{\"scope\": \"UPSTREAM\", \"step\": 1, \"task_id\": \"1002\"}": {"data": {"upstreamTaskIds": []}},
+    "{\"scope\": \"UPSTREAM\", \"step\": 1, \"task_id\": \"1003\"}": {"data": {"upstreamTaskIds": ["1001", "1002"]}},
+    "{\"scope\": \"UPSTREAM\", \"step\": 1, \"task_id\": \"2001\"}": {"data": {"upstreamTaskIds": ["1003"]}},
+    "{\"scope\": \"UPSTREAM\", \"step\": 1, \"task_id\": \"2002\"}": {"data": {"upstreamTaskIds": ["1003"]}}
+  }
+}
