@@ -125,7 +125,7 @@
       },
       "baseline": {
         "version": "3.0.0",
-        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+        "commit": "5ab8a132dd14ed7867cffdeeca81965023aac498"
       }
     },
     {
@@ -174,7 +174,7 @@
       },
       "baseline": {
         "version": "2.0.0",
-        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+        "commit": "5ab8a132dd14ed7867cffdeeca81965023aac498"
       }
     },
     {
@@ -185,7 +185,7 @@
       "docs": "./docs/install.md",
       "baseline": {
         "version": "2.0.0",
-        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+        "commit": "5ab8a132dd14ed7867cffdeeca81965023aac498"
       }
     },
     {
@@ -214,7 +214,7 @@
       },
       "baseline": {
         "version": "0.2.0",
-        "commit": "d309c48d3b1831a9c18e3a87d95a11a975f87026"
+        "commit": "5ab8a132dd14ed7867cffdeeca81965023aac498"
       }
     }
   ]

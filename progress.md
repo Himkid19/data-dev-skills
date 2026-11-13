@@ -49,8 +49,8 @@
   - `python scripts/lint_marketplace.py --check` → 4 个技能目录 / 4 条登记通过
   - `python scripts/sync_adapters.py --check` → 镜像一致
   - 隔离目录订阅演练：`subscribe.py --repo . --dest <tmp> --prefix <tmp>` 通过
-- **提交记录**：公开分支采用**无内部历史的孤立提交**——`d309c48` Initial public release
-  （全部文件以单个根提交入库，不再携带内部历史），`0ce5339` 刷新 marketplace baseline
+- **提交记录**：公开分支采用**无内部历史的孤立提交**——根提交包含全部公开文件
+  （不再携带内部历史），随后一条 baseline 刷新提交；推送时只推 `oss/data-dev-skills`
 - **已知风险**：
   - 真实元数据平台未在线验证：不同平台的响应结构可能超出示例配置的映射能力，
     需要用 `doctor` + 实际表名逐项校准 `response.path` / `item`

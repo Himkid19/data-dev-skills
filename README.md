@@ -57,7 +57,7 @@ python scripts/collect_mapping.py dm_demo_security \
   --out ../.tmp/demo
 
 # build the TSVs
-python scripts/build_tsv.py --input ../.tmp/demo/mapping.json --out ../.tmp/demo
+python scripts/build_tsv.py ../.tmp/demo/mapping.json --out ../.tmp/demo
 
 # run the lineage skill
 cd ../model-lineage-impact

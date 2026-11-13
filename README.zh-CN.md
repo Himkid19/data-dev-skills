@@ -49,7 +49,7 @@ cd master-data-source-mapping
 python scripts/collect_mapping.py dm_demo_security \
   --adapter-config ../adapter-configs/example.mock.json \
   --out ../.tmp/demo
-python scripts/build_tsv.py --input ../.tmp/demo/mapping.json --out ../.tmp/demo
+python scripts/build_tsv.py ../.tmp/demo/mapping.json --out ../.tmp/demo
 
 # 血缘影响：用 fixture 跑通
 cd ../model-lineage-impact

@@ -32,16 +32,17 @@ agent 复核结论写在 `output/<表名>_<日期>/review.json` 后重跑第 3 �
 
 | 来源缩写 | 来源表英文名 | 来源表中文名 | 匹配情况 |
 |---|---|---|---|
-| VENDOR_A | vendor_a_security | 供应商A证券表 | 覆盖2个主数据字段 |
-| VENDOR_B | vendor_b_security | 供应商B证券表 | 覆盖1个主数据字段 |
+| A | security_master | 来源 A 证券主表（虚构数据） | 覆盖4个主数据字段 |
+| B | security_basic | 来源 B 证券基础表（虚构数据） | 覆盖4个主数据字段 |
 
 **2_field_mapping.tsv · 详细字段映射（大宽表，来源列全局对齐，来源1..N 各 5 列）**
 
-| 字段英文名 | 匹配情况 | 来源1(VENDOR_A)表名称 | 来源1表字段英文名称 | 来源1表字段加工逻辑 |
+| 字段英文名 | 匹配情况 | 来源1(A)表名称 | 来源1表字段英文名称 | 来源1表字段加工逻辑 |
 |---|---|---|---|---|
-| scr_cd | 单源直传 | odata_vendor_a.vendor_a_security | security_code | （直传留空） |
-| mkt_cd | 多源整合 | odata_vendor_a.vendor_a_security | market_type | left join 码值维表 c on a.market_type=c.src_value |
-| scr_cn_full_name | 多源整合 | odata_vendor_b.vendor_b_security | security_name | （直传留空） |
+| scr_cd | 单源直传 | odata_vendor_a.security_master | security_code | （直传留空） |
+| scr_cn_full_name | 多源判断(仅加工逻辑) | odata_vendor_a.security_master | security_name | （直传留空） |
+| mkt_cd | 单源直传 | odata_vendor_a.security_master | market_code | （直传留空） |
+| list_date | 单源直传 | odata_vendor_a.security_master | list_date | （直传留空） |
 
 ## 工作原理
 
